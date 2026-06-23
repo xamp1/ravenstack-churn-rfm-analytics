@@ -1,29 +1,29 @@
 # ravenstack-churn-rfm-analytics
 
-Analisis ini dibuat untuk mencari penyebab tingginya churn pada platform SaaS **RavenStack** dan mengidentifikasi pelanggan yang berpotensi churn menggunakan segmentasi **RFM (Recency, Frequency, Monetary)**.
+This project analyzes customer churn in the fictional SaaS platform **RavenStack** and identifies customers who are at risk of leaving using **RFM (Recency, Frequency, Monetary)** segmentation.
 
-Dataset diproses menggunakan **Google BigQuery**, kemudian hasil analisis divisualisasikan dalam dashboard berbasis **Tailwind CSS**.
+The data was processed with **Google BigQuery**, and the results were presented in a responsive dashboard built with **Tailwind CSS**.
 
-## Business Case
+## Business Problem
 
-RavenStack memiliki churn rate sekitar **22%** pada seluruh paket (Basic, Pro, dan Enterprise). Angka tersebut cukup tinggi, terutama pada pelanggan Enterprise yang seharusnya memiliki tingkat retensi lebih baik.
+RavenStack has an overall churn rate of **22%** across all subscription plans (Basic, Pro, and Enterprise). While the churn rate is consistent across tiers, Enterprise customers deserve special attention due to their higher business value.
 
 ## Key Findings
 
-### Enterprise
+### Enterprise Customers
 
-* Rata-rata waktu penyelesaian tiket paling lama (**15.2 jam**).
-* Memiliki CSAT terendah (**2.0/5.0**).
-* Hampir tidak ditemukan error pada log penggunaan, yang mengindikasikan kemungkinan terjadinya **silent churn**.
+* Longest average support resolution time (**15.2 hours**).
+* Lowest customer satisfaction score (**2.0/5.0**).
+* Almost no recorded product errors, suggesting a possible case of **silent churn**, where customers stop using the product before meaningful usage data is generated.
 
-### Basic
+### Basic Customers
 
-* Memiliki error rate tertinggi (**15.31%**).
-* Sebagian besar pengguna berhenti menggunakan layanan tanpa banyak membuat support ticket.
+* Highest product error rate (**15.31%**).
+* Many users leave the platform without submitting support tickets, indicating technical frustration rather than service-related issues.
 
 ### RFM Segmentation
 
-Dari **390 akun aktif**, distribusi segmen pelanggan adalah:
+The current active customer base consists of **390 accounts**:
 
 | Segment                     | Accounts |
 | --------------------------- | -------: |
@@ -33,25 +33,24 @@ Dari **390 akun aktif**, distribusi segmen pelanggan adalah:
 | Low Spender / Highly Active |       58 |
 | Champions                   |       40 |
 
-Segmen **Can't Lose Them** menjadi prioritas karena memiliki nilai bisnis tinggi tetapi aktivitasnya mulai menurun.
+The **Can't Lose Them** segment is the highest priority since these customers generate strong business value but show declining engagement.
 
 ## Tech Stack
 
 * Google BigQuery
-* SQL (CTE, JOIN, NTILE)
+* SQL (CTEs, JOINs, NTILE)
 * Tailwind CSS
 * HTML & JavaScript
 
-## SQL Highlights
+## Analysis Included
 
-Beberapa analisis utama yang digunakan dalam proyek ini:
-
-* Churn analysis berdasarkan plan
-* Error rate vs churn
-* Support performance (SLA & CSAT)
-* RFM segmentation menggunakan `NTILE()`
-* Perilaku pelanggan berdasarkan aktivitas penggunaan dan support ticket
+* Churn analysis by subscription plan
+* Product error rate analysis
+* Support SLA and customer satisfaction analysis
+* RFM segmentation using `NTILE()`
+* Customer behavior analysis by combining product usage and support activity
 
 ## Notes
 
-Salah satu tantangan pada dataset adalah tabel `feature_usage` tidak memiliki `account_id` secara langsung. Relasi dilakukan melalui tabel `subscriptions` menggunakan `subscription_id` sebelum digabungkan dengan tabel `accounts`.
+One challenge in this dataset is that the `feature_usage` table does not contain an `account_id`. To analyze customer behavior, product usage data is linked through the `subscriptions` table using `subscription_id` before joining with the `accounts` table.
+
