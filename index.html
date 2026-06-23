@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RavenStack - Churn Analytics Hub</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Google Sans', 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            /* Very light gray typical of Google */
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+    <header class="sticky top-0 z-50 flex items-center justify-between border-b border-gray-200 bg-white px-6 py-3">
+        <div class="flex items-center space-x-3">
+            <div
+                class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white font-bold text-lg shadow-sm">
+                R
+            </div>
+            <span class="text-xl font-medium tracking-tight text-gray-700">RavenStack <span
+                    class="text-gray-400 font-normal">Analytics</span></span>
+        </div>
+    </header>
+    <main class="max-w-7xl mx-auto px-6 pt-8 pb-24">
+        <div class="mb-8">
+            <h1 class="text-2xl font-medium text-gray-900">Churn Analysis Executive Summary</h1>
+            <p class="text-sm text-gray-500 mt-1">Anomalies in the Enterprise plan are caused by high operational issue
+                resolution times.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs hover:shadow-md transition-shadow">
+                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Total Customers</p>
+                <p class="text-3xl font-semibold text-gray-900 mt-2">500</p>
+                <span class="text-xs text-gray-400 block mt-1">Active & Churned SaaS</span>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs hover:shadow-md transition-shadow">
+                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Average Churn Rate</p>
+                <p class="text-3xl font-semibold text-red-600 mt-2">22.0%</p>
+                <span class="text-xs text-red-400 font-medium block mt-1">⚠️ Above industry target (< 5%)</span>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs hover:shadow-md transition-shadow">
+                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Average Error Rate</p>
+                <p class="text-3xl font-semibold text-gray-900 mt-2">15.3%</p>
+                <span class="text-xs text-gray-400 block mt-1">On the Basic plan</span>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs hover:shadow-md transition-shadow">
+                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Enterprise Ticket Resolution</p>
+                <p class="text-3xl font-semibold text-amber-600 mt-2">15.2 Hours</p>
+                <span class="text-xs text-amber-500 font-medium block mt-1">⏳ Requires SLA intervention</span>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-xs overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200 bg-gray-50/50 flex justify-between items-center">
+                <h2 class="font-medium text-gray-800">Metric Comparison by Plan Tier</h2>
+                <span class="text-xs text-gray-400">BigQuery Query Results</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-gray-200 text-xs font-medium text-gray-500 uppercase bg-gray-50/70">
+                            <th class="px-6 py-3">Plan Tier</th>
+                            <th class="px-6 py-3 text-center">Churn Status</th>
+                            <th class="px-6 py-3 text-right">Total Accounts</th>
+                            <th class="px-6 py-3 text-right">Average Error Rate</th>
+                            <th class="px-6 py-3 text-right">Resolution Time (Hours)</th>
+                            <th class="px-6 py-3 text-center">Satisfaction (CSAT)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 text-sm">
+                        <tr class="hover:bg-gray-50/80 bg-red-50/20">
+                            <td class="px-6 py-4 font-medium text-gray-900">Enterprise</td>
+                            <td class="px-6 py-4 text-center">
+                                <span
+                                    class="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">True
+                                    (Churn)</span>
+                            </td>
+                            <td class="px-6 py-4 text-right font-mono">34</td>
+                            <td class="px-6 py-4 text-right font-mono text-gray-500">N/A</td>
+                            <td class="px-6 py-4 text-right font-mono text-amber-700 font-medium">15.2</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="text-red-600 font-medium">2.0 / 5.0</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/80">
+                            <td class="px-6 py-4 font-medium text-gray-900">Basic</td>
+                            <td class="px-6 py-4 text-center">
+                                <span
+                                    class="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">True
+                                    (Churn)</span>
+                            </td>
+                            <td class="px-6 py-4 text-right font-mono">37</td>
+                            <td class="px-6 py-4 text-right font-mono text-red-600 font-medium">15.31%</td>
+                            <td class="px-6 py-4 text-right font-mono text-gray-500">11.4</td>
+                            <td class="px-6 py-4 text-center text-gray-600">3.2 / 5.0</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/80">
+                            <td class="px-6 py-4 font-medium text-gray-900">Pro</td>
+                            <td class="px-6 py-4 text-center">
+                                <span
+                                    class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">False
+                                    (Active)</span>
+                            </td>
+                            <td class="px-6 py-4 text-right font-mono">139</td>
+                            <td class="px-6 py-4 text-right font-mono text-gray-500">Normal</td>
+                            <td class="px-6 py-4 text-right font-mono text-gray-500">9.1</td>
+                            <td class="px-6 py-4 text-center text-green-600 font-medium">4.1 / 5.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="bg-white rounded-2xl border border-gray-200 shadow-xs overflow-hidden mt-8">
+                    <div class="px-6 py-4 border-b border-gray-200 bg-gray-50/50">
+                        <h2 class="font-medium text-gray-800">Active Customer Segmentation Based on RFM Analysis</h2>
+                    </div>
+                    <div class="p-6 grid grid-cols-1 md:grid-cols-5 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <p class="text-xs text-gray-500 font-medium">💤 At Risk</p>
+                            <p class="text-2xl font-bold mt-1 text-gray-700">138</p>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                            <p class="text-xs text-blue-600 font-medium">✨ Loyal Customers</p>
+                            <p class="text-2xl font-bold mt-1 text-blue-700">96</p>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-xl border border-red-100">
+                            <p class="text-xs text-red-600 font-medium">🚨 Can't Lose Them</p>
+                            <p class="text-2xl font-bold mt-1 text-red-700">58</p>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-100">
+                            <p class="text-xs text-yellow-600 font-medium">🏷️ Low Spender</p>
+                            <p class="text-2xl font-bold mt-1 text-yellow-700">58</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+                            <p class="text-xs text-green-600 font-medium">🏆 Champions</p>
+                            <p class="text-2xl font-bold mt-1 text-green-700">40</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+        <div class="flex items-center justify-center rounded-full border border-gray-200/80 bg-white/80 px-6 py-2.5 shadow-sm backdrop-blur-md transition-all duration-300 hover:shadow-md hover:border-gray-300/90 hover:scale-[1.02]">
+            <span class="text-xs font-normal tracking-wide text-gray-500 flex items-center gap-1.5 select-none">
+                <span class="inline-block h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+                <span>&copy; 2026</span>
+                <span class="font-medium text-gray-700 hover:text-blue-600 transition-colors">Ath Thaariq Adz Zyad</span>
+            </span>
+        </div>
+    </footer>
+</body>
+
+</html>
